@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include <algorithm>
+#include <chrono>
 #include "DyV.h"
 
 using namespace std;
@@ -222,11 +223,23 @@ int main() {
 
     cout << endl << endl << endl;
     cout << "======== Ordenar vector por QuickSort ========" << endl;
+
+    std::chrono::time_point<std::chrono::system_clock> start, end;
+    std::chrono::duration<float, std::milli> duration;
+
     cout << "--- PRUEBAS CON ENTEROS (int) ---" << endl;
     vector<int> v1 = {5, 2, 9, 1, 7, 6, 3};
     cout << "Vector: ";
     printVector(v1);
+    start = std::chrono::system_clock::now();
+
     QuickSort(v1, 0, v1.size() - 1);
+
+    end = std::chrono::system_clock::now();
+    duration = end - start;
+
+    cout << "Tiempo de ejecucion: " << duration.count() << "s" << endl;
+
     cout << "Ordenado: ";
     printVector(v1);
 
@@ -235,7 +248,16 @@ int main() {
     vector<float> v2 = {3.5f, 1.2f, 5.8f, 0.9f, 2.4f};
     cout << "Vector: ";
     printVector(v2);
+
+    start = std::chrono::system_clock::now();
+
     QuickSort(v2, 0, v2.size() - 1);
+
+    end = std::chrono::system_clock::now();
+    duration = end - start;
+
+    cout << "Tiempo de ejecucion: " << duration.count() << "s" << endl;
+
     cout << "Ordenado: ";
     printVector(v2);
 
@@ -244,7 +266,16 @@ int main() {
     vector<double> v3 = {3.14, 1.5, 2.71, 0.5, 4.2};
     cout << "Original: ";
     printVector(v3);
+
+    start = std::chrono::system_clock::now();
+
     QuickSort(v3, 0, v3.size() - 1);
+
+    end = std::chrono::system_clock::now();
+    duration = end - start;
+
+    cout << "Tiempo de ejecucion: " << duration.count() << "s" << endl;
+
     cout << "Ordenado: ";
     printVector(v3);
 
@@ -253,17 +284,34 @@ int main() {
     vector<char> v4 = {'z', 'a', 'm', 'b', 'k', 'c'};
     cout << "Original: ";
     printVector(v4);
+
+    start = std::chrono::system_clock::now();
+
     QuickSort(v4, 0, v4.size() - 1);
+
+    end = std::chrono::system_clock::now();
+    duration = end - start;
+
+    cout << "Tiempo de ejecucion: " << duration.count() << "s" << endl;
+
     cout << "Ordenado: ";
     printVector(v4);
 
 
     cout << "--- PRUEBAS CON CADENAS (string) ---" << endl;
-    cout << "\n=== CADENAS (string) ===" << endl;
     vector<string> v5 = {"manzana", "cereza", "banana", "uva", "kiwi"};
     cout << "Original: ";
     printVector(v5);
+
+    start = std::chrono::system_clock::now();
+
     QuickSort(v5, 0, v5.size() - 1);
+
+    end = std::chrono::system_clock::now();
+    duration = end - start;
+
+    cout << "Tiempo de ejecucion: " << duration.count() << "s" << endl;
+
     cout << "Ordenado: ";
     printVector(v5);
 
@@ -271,14 +319,22 @@ int main() {
 
 
 
-
-    // Pruebas con los QuickSort con pivote en el principio y en el medio
+    // Pruebas con los QuickSort con pivote en el principio
     cout << "--- Prueba con pivote en el principio ---" << endl;
 
     vector<int> v6 = {5, 2, 9, 1, 7, 6, 3};
     cout << "Vector: ";
     printVector(v6);
-    QuickSort_inicio(v6, 0, v6.size() - 1);
+
+    start = std::chrono::system_clock::now();
+
+    QuickSort(v6, 0, v6.size() - 1);
+
+    end = std::chrono::system_clock::now();
+    duration = end - start;
+
+    cout << "Tiempo de ejecucion: " << duration.count() << "s" << endl;
+
     cout << "Ordenado: ";
     printVector(v6);
 
