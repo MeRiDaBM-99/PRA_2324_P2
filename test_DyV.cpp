@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <algorithm>
 #include "DyV.h"
 
 using namespace std;
@@ -16,6 +17,8 @@ void imprimirResultado(string tipo, string valorBuscado, int resultado, int espe
 }
 
 int main() {
+    cout << "======== Busqueda binaria en orden ascendente ========" << endl;
+
     cout << "--- PRUEBAS CON ENTEROS (int) ---" << endl;
     vector<int> enteros = {2, 5, 8, 12, 16, 23, 38, 45, 56, 67, 78};
     
@@ -131,6 +134,96 @@ int main() {
     cout << "Vector de dos elementos: ";
     imprimirResultado("int", "10", BusquedaBinaria(10, dosElementos, 0, 1), 0);
     imprimirResultado("int", "20", BusquedaBinaria(20, dosElementos, 0, 1), 1);
-    
+
+
+
+
+
+
+    cout << endl << endl << endl;
+    cout << "======== Busqueda binaria en orden descendente ========" << endl;
+    cout << "--- PRUEBAS CON ENTEROS (int) ---" << endl;
+    reverse(enteros.begin(), enteros.end());
+
+    cout << "Vector: ";
+    for (int num : enteros) {
+        cout << num << " ";
+    }
+    cout << endl << endl;
+
+    // Buscar elementos que SÍ están
+    imprimirResultado("int", "23", BusquedaBinaria_INV(23, enteros, 0, 10), 5);
+    imprimirResultado("int", "45", BusquedaBinaria_INV(45, enteros, 0, 10), 3);
+
+    // Buscar elementos que NO están
+    imprimirResultado("int", "10", BusquedaBinaria_INV(10, enteros, 0, 10), -1);;
+    imprimirResultado("int", "1", BusquedaBinaria_INV(1, enteros, 0, 10), -1);
+
+    cout << endl;
+
+
+    cout << "--- PRUEBAS CON FLOTANTES (float) ---" << endl;
+    reverse(flotantes.begin(), flotantes.end());
+
+    cout << "Vector: ";
+    for (float num : flotantes) {
+        cout << num << " ";
+    }
+    cout << endl << endl;
+
+    imprimirResultado("float", "5.1", BusquedaBinaria_INV(5.1f, flotantes, 0, 6), 3);
+    imprimirResultado("float", "7.0", BusquedaBinaria_INV(7.0f, flotantes, 0, 6), -1);
+
+    cout << endl;
+
+
+    cout << "--- PRUEBAS CON CARACTERES (char) ---" << endl;
+    reverse(caracteres.begin(), caracteres.end());
+
+    cout << "Vector: ";
+    for (char c : caracteres) {
+        cout << c << " ";
+    }
+    cout << endl << endl;
+
+    imprimirResultado("char", "'e'", BusquedaBinaria_INV('e', caracteres, 0, 8), 6);
+    imprimirResultado("char", "'q'", BusquedaBinaria_INV('q', caracteres, 0, 8), 0);
+    imprimirResultado("char", "'b'", BusquedaBinaria_INV('b', caracteres, 0, 8), -1);
+
+
+    cout << endl;
+
+
+    cout << "--- PRUEBAS CON CADENAS (string) ---" << endl;
+    reverse(palabras.begin(), palabras.end());
+
+    cout << "Vector: ";
+    for (string palabra : palabras) {
+        cout << palabra << " ";
+    }
+    cout << endl << endl;
+
+    imprimirResultado("string", "gato", BusquedaBinaria_INV(string("gato"), palabras, 0, 7), 3);
+    imprimirResultado("string", "alba", BusquedaBinaria_INV(string("alba"), palabras, 0, 7), 7);
+    imprimirResultado("string", "perro", BusquedaBinaria_INV(string("perro"), palabras, 0, 7), -1);
+
+    cout << endl;
+
+
+    cout << "--- PRUEBAS CON DOBLES (double) ---" << endl;
+    reverse(dobles.begin(), dobles.end());
+
+    cout << "Vector: ";
+    for (double num : dobles) {
+        cout << num << " ";
+    }
+    cout << endl << endl;
+
+    imprimirResultado("double", "5.55", BusquedaBinaria_INV(5.55, dobles, 0, 8), 4);
+    imprimirResultado("double", "1.11", BusquedaBinaria_INV(1.11, dobles, 0, 8), 8);
+    imprimirResultado("double", "6.00", BusquedaBinaria_INV(6.00, dobles, 0 ,8), -1);
+
+    cout << endl;
+
     return 0;
 }
