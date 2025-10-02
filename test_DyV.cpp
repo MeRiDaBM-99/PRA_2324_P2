@@ -269,5 +269,19 @@ int main() {
 
 
 
+
+
+
+    // Pruebas con los QuickSort con pivote en el principio y en el medio
+    cout << "--- Prueba con pivote en el principio ---" << endl;
+
+    vector<int> v6 = {5, 2, 9, 1, 7, 6, 3};
+    cout << "Vector: ";
+    printVector(v6);
+    QuickSort_inicio(v6, 0, v6.size() - 1);
+    cout << "Ordenado: ";
+    printVector(v6);
+
+
     return 0;
 }
