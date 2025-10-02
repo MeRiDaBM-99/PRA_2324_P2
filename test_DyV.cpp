@@ -16,6 +16,17 @@ void imprimirResultado(string tipo, string valorBuscado, int resultado, int espe
     }
 }
 
+
+
+template<typename T>
+void printVector(const vector<T>& V){
+	for(const auto& X : V){
+		cout << X << " ";
+	}
+	cout << endl << endl;
+}
+
+
 int main() {
     cout << "======== Busqueda binaria en orden ascendente ========" << endl;
 
@@ -23,11 +34,9 @@ int main() {
     vector<int> enteros = {2, 5, 8, 12, 16, 23, 38, 45, 56, 67, 78};
     
     cout << "Vector: ";
-    for (int num : enteros) {
-        cout << num << " ";
-    }
-    cout << endl << endl;
-    
+    printVector(enteros);
+
+
     // Buscar elementos que SÍ están
     imprimirResultado("int", "23", BusquedaBinaria(23, enteros, 0, 10), 5);
     imprimirResultado("int", "45", BusquedaBinaria(45, enteros, 0, 10), 7);
@@ -47,10 +56,8 @@ int main() {
     vector<float> flotantes = {1.5f, 2.3f, 3.7f, 5.1f, 8.9f, 12.4f, 15.6f};
     
     cout << "Vector: ";
-    for (float num : flotantes) {
-        cout << num << " ";
-    }
-    cout << endl << endl;
+    printVector(flotantes);
+
     
     imprimirResultado("float", "5.1", BusquedaBinaria(5.1f, flotantes, 0, 6), 3);
     imprimirResultado("float", "7.0", BusquedaBinaria(7.0f, flotantes, 0, 6), -1);
@@ -66,10 +73,8 @@ int main() {
     vector<char> caracteres = {'a', 'c', 'e', 'g', 'i', 'k', 'm', 'o', 'q'};
     
     cout << "Vector: ";
-    for (char c : caracteres) {
-        cout << c << " ";
-    }
-    cout << endl << endl;
+    printVector(caracteres);
+
     
     imprimirResultado("char", "'e'", BusquedaBinaria('e', caracteres, 0, 8), 2);
     imprimirResultado("char", "'q'", BusquedaBinaria('q', caracteres, 0, 8), 8);
@@ -86,10 +91,8 @@ int main() {
     vector<string> palabras = {"alba", "casa", "dado", "elfo", "gato", "lobo", "mesa", "oso"};
     
     cout << "Vector: ";
-    for (string palabra : palabras) {
-        cout << palabra << " ";
-    }
-    cout << endl << endl;
+    printVector(palabras);
+
     
     imprimirResultado("string", "gato", BusquedaBinaria(string("gato"), palabras, 0, 7), 4);
     imprimirResultado("string", "alba", BusquedaBinaria(string("alba"), palabras, 0, 7), 0);
@@ -107,10 +110,8 @@ int main() {
     vector<double> dobles = {1.11, 2.22, 3.33, 4.44, 5.55, 6.66, 7.77, 8.88, 9.99};
     
     cout << "Vector: ";
-    for (double num : dobles) {
-        cout << num << " ";
-    }
-    cout << endl << endl;
+    printVector(dobles);
+
     
     imprimirResultado("double", "5.55", BusquedaBinaria(5.55, dobles, 0, 8), 4);
     imprimirResultado("double", "1.11", BusquedaBinaria(1.11, dobles, 0, 8), 0);
@@ -146,10 +147,8 @@ int main() {
     reverse(enteros.begin(), enteros.end());
 
     cout << "Vector: ";
-    for (int num : enteros) {
-        cout << num << " ";
-    }
-    cout << endl << endl;
+    printVector(enteros);
+
 
     // Buscar elementos que SÍ están
     imprimirResultado("int", "23", BusquedaBinaria_INV(23, enteros, 0, 10), 5);
@@ -166,10 +165,8 @@ int main() {
     reverse(flotantes.begin(), flotantes.end());
 
     cout << "Vector: ";
-    for (float num : flotantes) {
-        cout << num << " ";
-    }
-    cout << endl << endl;
+    printVector(flotantes);
+
 
     imprimirResultado("float", "5.1", BusquedaBinaria_INV(5.1f, flotantes, 0, 6), 3);
     imprimirResultado("float", "7.0", BusquedaBinaria_INV(7.0f, flotantes, 0, 6), -1);
@@ -181,10 +178,8 @@ int main() {
     reverse(caracteres.begin(), caracteres.end());
 
     cout << "Vector: ";
-    for (char c : caracteres) {
-        cout << c << " ";
-    }
-    cout << endl << endl;
+    printVector(caracteres);
+
 
     imprimirResultado("char", "'e'", BusquedaBinaria_INV('e', caracteres, 0, 8), 6);
     imprimirResultado("char", "'q'", BusquedaBinaria_INV('q', caracteres, 0, 8), 0);
@@ -198,10 +193,8 @@ int main() {
     reverse(palabras.begin(), palabras.end());
 
     cout << "Vector: ";
-    for (string palabra : palabras) {
-        cout << palabra << " ";
-    }
-    cout << endl << endl;
+    printVector(palabras);
+
 
     imprimirResultado("string", "gato", BusquedaBinaria_INV(string("gato"), palabras, 0, 7), 3);
     imprimirResultado("string", "alba", BusquedaBinaria_INV(string("alba"), palabras, 0, 7), 7);
@@ -214,16 +207,67 @@ int main() {
     reverse(dobles.begin(), dobles.end());
 
     cout << "Vector: ";
-    for (double num : dobles) {
-        cout << num << " ";
-    }
-    cout << endl << endl;
+    printVector(dobles);
+
 
     imprimirResultado("double", "5.55", BusquedaBinaria_INV(5.55, dobles, 0, 8), 4);
     imprimirResultado("double", "1.11", BusquedaBinaria_INV(1.11, dobles, 0, 8), 8);
     imprimirResultado("double", "6.00", BusquedaBinaria_INV(6.00, dobles, 0 ,8), -1);
 
     cout << endl;
+
+
+
+
+
+    cout << endl << endl << endl;
+    cout << "======== Ordenar vector por QuickSort ========" << endl;
+    cout << "--- PRUEBAS CON ENTEROS (int) ---" << endl;
+    vector<int> v1 = {5, 2, 9, 1, 7, 6, 3};
+    cout << "Vector: ";
+    printVector(v1);
+    QuickSort(v1, 0, v1.size() - 1);
+    cout << "Ordenado: ";
+    printVector(v1);
+
+
+    cout << "--- PRUEBAS CON FLOTANTES (floats) ---" << endl;
+    vector<float> v2 = {3.5f, 1.2f, 5.8f, 0.9f, 2.4f};
+    cout << "Vector: ";
+    printVector(v2);
+    QuickSort(v2, 0, v2.size() - 1);
+    cout << "Ordenado: ";
+    printVector(v2);
+
+
+    cout << "--- PRUEBAS CON DOBLES (double) ---" << endl;
+    vector<double> v3 = {3.14, 1.5, 2.71, 0.5, 4.2};
+    cout << "Original: ";
+    printVector(v3);
+    QuickSort(v3, 0, v3.size() - 1);
+    cout << "Ordenado: ";
+    printVector(v3);
+
+
+    cout << "--- PRUEBAS CON CARACTERES (char) ---" << endl;
+    vector<char> v4 = {'z', 'a', 'm', 'b', 'k', 'c'};
+    cout << "Original: ";
+    printVector(v4);
+    QuickSort(v4, 0, v4.size() - 1);
+    cout << "Ordenado: ";
+    printVector(v4);
+
+
+    cout << "--- PRUEBAS CON CADENAS (string) ---" << endl;
+    cout << "\n=== CADENAS (string) ===" << endl;
+    vector<string> v5 = {"manzana", "cereza", "banana", "uva", "kiwi"};
+    cout << "Original: ";
+    printVector(v5);
+    QuickSort(v5, 0, v5.size() - 1);
+    cout << "Ordenado: ";
+    printVector(v5);
+
+
 
     return 0;
 }

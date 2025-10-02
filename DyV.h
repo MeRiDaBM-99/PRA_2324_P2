@@ -25,6 +25,7 @@ int BusquedaBinaria(T X, const vector<T>& V, int ini, int fin){
 
 
 
+
 template<typename T>
 
 int BusquedaBinaria_INV(T X, const vector<T>& V, int ini, int fin){
@@ -43,6 +44,40 @@ int BusquedaBinaria_INV(T X, const vector<T>& V, int ini, int fin){
     }
 }
 
+
+
+
+
+//Programa QuickSort
+
+template<typename T>
+int Partition(vector<T>& V, int ini, int fin){
+    T x = V[fin];
+    int i = ini;
+    for(int j = ini; j < fin; j++){
+        if(V[j] <= x){
+            T aux = V[j];
+            V[j] = V[i];
+            V[i] = aux;
+            i = i + 1;
+        }
+    }
+    T aux_ = V[i];
+    V[i] = V[fin];
+    V[fin] = aux_;
+
+    return i;
+
+}
+
+template<typename T>
+void QuickSort(vector<T>& V, int ini, int fin){
+    if(ini < fin){
+        int pivot = Partition(V, ini, fin);
+        QuickSort(V, ini, pivot - 1);
+        QuickSort(V, pivot + 1, fin);
+    }
+}
 
 
 #endif
